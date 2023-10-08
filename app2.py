@@ -1,7 +1,6 @@
 import streamlit as st
 import plotly.express as px
 import pandas as pd
-import os
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -10,16 +9,18 @@ st.set_page_config(page_title="SuperStore!!!", page_icon=":bar_chart:", layout="
 st.title(" :bar_chart: Sample Superstore EDA")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
-fl = st.file_uploader("Upload a file", type=(["csv","txt","xlsx","xls"]))
+fl = st.file_uploader("Upload a file", type=(["csv","txt","xlsx","xls","xlsb"]))
 
 if fl is not None:
-    filename = fl.name
-    st.write(filename)
-    df = pd.read_excel(filename, engine="xlrd")  # Usando 'engine="xlrd"' para arquivos XLS
+    try:
+        df = pd.read_excel(fl, engine="openpyxl")  # Usando 'engine="openpyxl"' para arquivos XLSX e XLS
+    except Exception as e:
+        st.warning(f"Failed to read the file: {e}")
+        st.stop()
 else:
-    default_file_path = r"C:\Users\User\Desktop\Pessoal\DataScience\Estudo Python\DashPython\Superstore.xls"
-    df = pd.read_excel(default_file_path, engine="xlrd")  # Usando 'engine="xlrd"' para arquivos XLS
-    
+    st.warning("Please upload a file to continue.")
+    st.stop()
+
 col1, col2 = st.columns((2))
 df["Order Date"] = pd.to_datetime(df["Order Date"])
     
