@@ -11,7 +11,7 @@ st.title(" :bar_chart: Sample Superstore EDA")
 st.markdown('<style>div.block-container{padding-top:1rem;}</style>', unsafe_allow_html=True)
 
 # URL do arquivo XLSX no GitHub
-xlsx_url = "https://raw.githubusercontent.com/seu_usuario/seu_repositorio/seu_caminho/arquivo.xlsx"
+xlsx_url = "https://github.com/LeonardoMartinsFonseca/Dash_SuperStore/blob/a9a3d433521273fe621211e8ecc12724f796bce9/C%C3%B3pia%20de%20Superstore.xlsx"
 
 try:
     df = pd.read_excel(xlsx_url, engine="openpyxl")  # Carrega o arquivo XLSX diretamente da URL
