@@ -169,7 +169,7 @@ with st.expander("Summary_Table"):
     st.markdown("Month wise sub-Category Table")
     filtered_df["month"] = filtered_df["Order Date"].dt.month_name()
     sub_Category_Year = pd.pivot_table(data = filtered_df, values = "Sales", index = ["Sub-Category"],columns = "month")
-    st.write(sub_Category_Year.style.background_gradient(cmap="Blues"))
+    st.write(sub_Category_Year)
     
 #Create a scatter plot
 data1 = px.scatter(filtered_df, x = "Sales", y = "Profit", size = "Quantity")
