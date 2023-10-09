@@ -14,7 +14,7 @@ fl = st.file_uploader("Upload a file", type=(["csv","txt","xlsx","xls","xlsb"]))
 
 if fl is not None:
     try:
-        df = pd.read_excel(fl, engine="openpyxl")  # Usando 'engine="openpyxl"' para arquivos XLSX e XLS
+        df = pd.read_excel('https://github.com/LeonardoMartinsFonseca/Dash_SuperStore/blob/main/C%C3%B3pia%20de%20Superstore.xlsx?raw=true', engine='openpyxl')
     except Exception as e:
         st.warning(f"Failed to read the file: {e}")
         st.stop()
